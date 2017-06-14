@@ -7,7 +7,8 @@ In January 2017 DigitalNote added ringCT support for merged mining transactions 
 Please see the current troubleshooting I am doing below, or install instructions below that.  You must use node v0.10, new nodejs versions have issues with the original source.  I recommend node v0.10.48.  If you have any problems with node-gyp errors try deleting ~/.node-gyp on your root, reboot and npm update again.
 
 ===============================================================
-CURRENT TROUBLESHOOTING UPON "node init.js":
+
+CURRENT TROUBLESHOOTING "node init.js" after miner connects:
 
 Error: Failed to parse block
     at Object.BlockTemplate.nextBlob (/root/toad/lib/pool.js:122:23)
