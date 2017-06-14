@@ -1,9 +1,29 @@
-cryptonote-universal-pool
+cryptonote-universal-pool-xdn
 ====================
+High performance Node.js (with native C addons) mining pool for CryptoNote based coins, specialized for XDN DigitalNote.
 
-High performance Node.js (with native C addons) mining pool for CryptoNote based coins such as Bytecoin, DuckNote, Monero, QuazarCoin, Boolberry, Dashcoin, etc..
-Comes with lightweight example front-end script which uses the pool's AJAX API.
+In January 2017 DigitalNote added ringCT support for merged mining transactions to continue the allowance of XMR merged mining.  The module "cryptonote-util" was updated (https://github.com/DrCryptoToad/node-cryptonote-util) and it is to be used with this pool code.  The new version of node-cryptonote-util attempts to add ringct support to merged mining transactions but when a miner connects, we still get a block parsing error as shown below.
 
+Please see the current troubleshooting I am doing below, or install instructions below that.  You must use node v0.10, new nodejs versions have issues with the original source.  I recommend node v0.10.48.  If you have any problems with node-gyp errors try deleting ~/.node-gyp on your root, reboot and npm update again.
+
+===============================================================
+CURRENT TROUBLESHOOTING UPON "node init.js":
+
+Error: Failed to parse block
+    at Object.BlockTemplate.nextBlob (/root/toad/lib/pool.js:122:23)
+    at Object.Miner.getJob (/root/toad/lib/pool.js:299:41)
+    at handleMinerMethod (/root/toad/lib/pool.js:494:28)
+    at handleMessage (/root/toad/lib/pool.js:624:13)
+    at Socket.socket.on.on.on.pushMessage (/root/toad/lib/pool.js:678:25)
+    at Socket.emit (events.js:95:17)
+    at Socket.<anonymous> (_stream_readable.js:765:14)
+    at Socket.emit (events.js:92:17)
+    at emitReadable_ (_stream_readable.js:427:10)
+    at emitReadable (_stream_readable.js:423:5)
+
+
+
+================================================================
 
 
 #### Table of Contents
@@ -121,7 +141,7 @@ sudo apt-get install git redis-server libboost1.55-all-dev nodejs-dev nodejs-leg
 Clone the repository and run `npm update` for all the dependencies to be installed:
 
 ```bash
-git clone https://github.com/fancoder/cryptonote-universal-pool.git pool
+git clone https://github.com/DrCryptoToad/cryptonote-universal-pool-xdn.git pool
 cd pool
 npm update
 ```
@@ -132,7 +152,7 @@ npm update
 Explanation for each field:
 ```javascript
 /* Used for storage in redis so multiple coins can share the same redis instance. */
-"coin": "ducknote",
+"coin": "digitalnote",
 
 /* Used for front-end display */
 "symbol": "XDN",
